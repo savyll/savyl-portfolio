@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/layout/container";
 import { ExternalLinkButton } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { getPublicPath } from "@/lib/public-path";
 
 import { SectionMarker } from "./section-marker";
 
@@ -52,14 +53,14 @@ export function Projects() {
 
           <figure className="min-w-0 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:self-center" data-reveal="">
             <a
-              href="/projects/atlas-overview.png"
+              href={getPublicPath("/projects/atlas-overview.png")}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View full-size ATLAS Overview screenshot (opens in a new tab)"
               className="group block overflow-hidden rounded-panel border border-border-strong bg-surface shadow-card transition-[border-color,box-shadow] duration-300 hover:border-accent-border focus-visible:border-accent-border motion-reduce:transition-none"
             >
               <Image
-                src="/projects/atlas-overview.png"
+                src={getPublicPath("/projects/atlas-overview.png")}
                 alt="ATLAS Overview showing live latency, packet loss, jitter, DNS measurements, a latency graph, and service-availability monitoring."
                 width={2160}
                 height={1353}
