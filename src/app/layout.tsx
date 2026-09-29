@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { PersonStructuredData } from "@/components/seo/person-structured-data";
 import { siteConfig } from "@/config/site";
+import { getPublicPath } from "@/lib/public-path";
 import { getSiteUrl } from "@/lib/site-url";
 
 import "./globals.css";
@@ -75,8 +76,8 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: [{ url: "/icon", type: "image/png", sizes: "64x64" }],
-    shortcut: "/icon",
+    icon: [{ url: getPublicPath("/icon"), type: "image/png", sizes: "64x64" }],
+    shortcut: getPublicPath("/icon"),
   },
 };
 
