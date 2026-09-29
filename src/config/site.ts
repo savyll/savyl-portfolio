@@ -49,15 +49,44 @@ export const siteConfig = {
     atlas: {
       name: "ATLAS",
       subtitle: "Network Intelligence & Diagnostics",
+      metadata: "Windows Desktop App · v0.3.0",
       description:
         "A Windows desktop network intelligence and diagnostics application built with Electron, React, TypeScript, and Node.js. ATLAS provides live latency, packet-loss, jitter, and DNS measurements, native diagnostic tools, real service-availability monitoring, outage detection, and evidence-based “is it me or them?” analysis.",
       technologies: ["Electron", "React", "TypeScript", "Node.js", "Vite", "Recharts"],
       github: "https://github.com/savyll/atlas-network-intelligence",
     },
     graphicsEditor: {
-      name: "2D Graphics Editor in C",
+      name: "Menu-Driven 2D Graphics Editor in C",
+      metadata: "C Programming · Academic Project",
       description:
-        "A C-based 2D graphics editor project demonstrating programming fundamentals, structured logic, and basic graphics manipulation.",
+        "A menu-driven C console application that draws shapes with * characters on a 25 × 60 canvas. Objects can be added, modified, or deleted, with the canvas redrawn after each change.",
+      features: [
+        "25 × 60 character-based canvas",
+        "Circles, rectangles, lines, and triangles",
+        "Add, modify, and delete objects",
+        "Display, list, and clear operations",
+      ],
+      // Exact menu labels from graphics_editor.c on the repository's main branch.
+      menu: [
+        "1. Add object",
+        "2. Delete object",
+        "3. Modify object",
+        "4. Display picture",
+        "5. List objects",
+        "6. Clear all objects",
+        "7. Exit",
+      ],
+      // Rows 0–6, columns 0–12 after drawRectangle(canvas, 1, 1, 11, 5).
+      // The actual canvas is 25 × 60; this is explicitly presented as a crop.
+      canvasExcerpt: [
+        "_____________",
+        "_***********_",
+        "_*_________*_",
+        "_*_________*_",
+        "_*_________*_",
+        "_***********_",
+        "_____________",
+      ],
       technologies: ["C"],
       github: "https://github.com/savyll/2d-graphics-editor-c",
     },
