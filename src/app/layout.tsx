@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     },
   ],
   creator: siteConfig.personName,
-  alternates: siteUrl ? { canonical: siteUrl } : undefined,
+  alternates: siteUrl ? { canonical: "./" } : undefined,
   openGraph: {
     type: "website",
     locale: "en_US",
