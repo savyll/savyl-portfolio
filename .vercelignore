@@ -1,0 +1,18 @@
+# Local dependencies and build output
+node_modules/
+.next/
+out/
+build/
+coverage/
+.vercel/
+
+# QA captures and temporary development files
+previews/
+*.tsbuildinfo
+next-env.d.ts
+*.log
+.DS_Store
+
+# Keep local environment files and private keys out of uploads
+.env*
+*.pem

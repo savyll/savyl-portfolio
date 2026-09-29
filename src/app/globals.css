@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #080a0f;
+  --background-elevated: #0b0e15;
+  --foreground: #f7f8fb;
+  --surface: #0f131c;
+  --surface-raised: #131925;
+  --surface-muted: #171d29;
+  --border: rgb(255 255 255 / 8.5%);
+  --border-strong: rgb(255 255 255 / 14%);
+  --muted: #a5aebd;
+  --subtle: #8f99a9;
+  --accent: #5366df;
+  --accent-hover: #6275ed;
+  --accent-highlight: #8491ff;
+  --accent-soft: rgb(112 128 255 / 11%);
+  --accent-border: rgb(132 145 255 / 34%);
+  --accent-foreground: #ffffff;
+  --card-shadow: 0 24px 70px -42px rgb(0 0 0 / 92%);
+  --button-shadow: 0 14px 34px -18px rgb(83 102 223 / 82%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-highlight: var(--accent-highlight);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-border: var(--accent-border);
+  --color-accent-foreground: var(--accent-foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --radius-card: 1.125rem;
+  --radius-panel: 0.875rem;
+  --shadow-card: var(--card-shadow);
+  --shadow-button: var(--button-shadow);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    background: var(--background);
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "ss01" 1, "cv01" 1, "cv11" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-highlight);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+}
+
+@layer utilities {
+  .hero-depth {
+    background:
+      radial-gradient(circle at 74% 10%, rgb(98 117 237 / 4.5%), transparent 30rem),
+      linear-gradient(180deg, rgb(255 255 255 / 0.9%), transparent 46%);
+  }
+
+  .hero-enter {
+    animation: hero-enter 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-enter-1 {
+    animation-delay: 40ms;
+  }
+
+  .hero-enter-2 {
+    animation-delay: 95ms;
+  }
+
+  .hero-enter-3 {
+    animation-delay: 160ms;
+  }
+
+  .hero-enter-4 {
+    animation-delay: 220ms;
+  }
+
+  .roadmap-connector {
+    background: rgb(255 255 255 / 18%);
+  }
+
+  html.reveal-enabled [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+    transition:
+      opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  html.reveal-enabled [data-reveal][data-reveal-delay="1"] {
+    --reveal-delay: 70ms;
+  }
+
+  html.reveal-enabled [data-reveal][data-reveal-delay="2"] {
+    --reveal-delay: 130ms;
+  }
+
+  html.reveal-enabled [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  /* Keyboard focus must never wait for an entrance animation. */
+  html.reveal-enabled [data-reveal]:focus-within {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0.72;
+    transform: translate3d(0, 14px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  html.reveal-enabled [data-reveal] {
+    transform: translate3d(0, 14px, 0);
+  }
+
+  html.reveal-enabled [data-reveal][data-reveal-delay="1"] {
+    --reveal-delay: 40ms;
+  }
+
+  html.reveal-enabled [data-reveal][data-reveal-delay="2"] {
+    --reveal-delay: 75ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-enter {
+    animation: none;
+  }
+
+  html.reveal-enabled [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+html[data-motion="reduced"] {
+  scroll-behavior: auto;
+}
+
+html[data-motion="reduced"] .hero-enter {
+  animation: none;
+}
+
+html[data-motion="reduced"].reveal-enabled [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
